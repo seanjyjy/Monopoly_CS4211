@@ -1,0 +1,14 @@
+﻿#define boardSize 10;
+#define white -1;
+#define blue 0;
+#define red 1;
+#define green 2;
+#define no_owner -1;
+#define start 3;
+
+#define pass_go 200;
+
+#define p1 0;
+#define p2 1;
+
+var dice = 0;

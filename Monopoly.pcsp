@@ -1,0 +1,9 @@
+﻿#include "board.csp";
+#include "constant.csp";
+#include "player.pcsp";
+#include "move.pcsp";
+
+Game = roll(0);
+
+#define test (position[p1][0] == 9);
+#assert Game reaches test;
