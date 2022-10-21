@@ -12,3 +12,5 @@
 #define p2 1;
 
 var dice = 0;
+
+var roundWinner = 0;

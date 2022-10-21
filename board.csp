@@ -1,6 +1,4 @@
-﻿
-
-// [0 -> own by which idx, 1-> cost, 2-> rent, 3-> color]
+﻿// [0 -> own by which idx, 1-> cost, 2-> rent, 3-> color]
 var board[boardSize][4] = [no_owner, 0, 0, start,
 	no_owner, 500, 50, blue,
 	no_owner, 550, 60, blue,
@@ -16,4 +14,9 @@ var position[2][2] = [0, 1000,
 0, 1000];
 var round = 0;
 
-// changeTurn
+// monitors the state of the game
+//roundChecker(piece) = {
+//	if (position[p1][1] > position[p2][1]) {
+//		
+//	}
+//}

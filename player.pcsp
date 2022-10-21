@@ -1,10 +1,10 @@
 ﻿handleP1Buy(piece) = pcase {
-	4: {board[position[piece][0]][0] = piece} ->  roll((piece + 1) % 2)
+	4: {board[position[piece][0]][0] = piece; position[piece][1] = position[piece][1] - board[position[piece][0]][1];} ->  roll((piece + 1) % 2)
 	1:  roll((piece + 1) % 2)
 };
 
 handleP2Buy(piece) = pcase {
-	1: {board[position[piece][0]][0] = piece} ->  roll((piece + 1) % 2)
+	1: {board[position[piece][0]][0] = piece; position[piece][1] = position[piece][1] - board[position[piece][0]][1];} ->  roll((piece + 1) % 2)
 	1:  roll((piece + 1) % 2)
 };
 
