@@ -1,20 +1,21 @@
-﻿handleP1Buy(piece) = pcase {
-	4: {board[position[piece][0]][0] = piece; position[piece][1] = position[piece][1] - board[position[piece][0]][1];} ->  roll((piece + 1) % 2)
-	1:  roll((piece + 1) % 2)
+﻿handleBuy(piece, buyProb, dontBuyProb) = pcase {
+	buyProb: {
+		var piecePos = position[piece][idx];
+		board[piecePos][idx] = piece;
+		position[piece][money] = position[piece][money] - board[piecePos][cost];
+	} -> Game
+	dontBuyProb: Game
 };
 
-handleP2Buy(piece) = pcase {
-	1: {board[position[piece][0]][0] = piece; position[piece][1] = position[piece][1] - board[position[piece][0]][1];} ->  roll((piece + 1) % 2)
-	1:  roll((piece + 1) % 2)
-};
-
-decideBuy(piece) = [piece == p1] handleP1Buy(piece)
+decideBuy(piece) = [piece == p1] handleBuy(piece, 4, 1)
 				   []
-				   [piece == p2] handleP2Buy(piece);
+				   [piece == p2] handleBuy(piece, 1, 1);
 					
 
 payRent(piece) = rentPay.piece {
-	position[piece][1] = position[piece][1] - board[position[piece][0]][2];
-	position[board[position[piece][0]][0]][1] = position[board[position[piece][0]][0]][1] + board[position[piece][0]][2];
-} -> roll((piece + 1) % 2);
+	var rental = board[position[piece][idx]][rent];
+	var ownerPosition = board[position[piece][idx]][owner];
+	position[piece][money] = position[piece][money] - rental;
+	position[ownerPosition][money] = position[ownerPosition][money] + rental;
+} -> Game;
 

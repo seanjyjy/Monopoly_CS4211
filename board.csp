@@ -13,10 +13,3 @@ var board[boardSize][4] = [no_owner, 0, 0, start,
 var position[2][2] = [0, 1000, 
 0, 1000];
 var round = 0;
-
-// monitors the state of the game
-//roundChecker(piece) = {
-//	if (position[p1][1] > position[p2][1]) {
-//		
-//	}
-//}

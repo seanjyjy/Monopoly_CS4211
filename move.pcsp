@@ -1,24 +1,24 @@
 ﻿roll(i) = pcase {
-	1: {dice=1} -> move(i, dice)
-	1: {dice=2} -> move(i, dice)
-	1: {dice=3} -> move(i, dice)
-	1: {dice=4} -> move(i, dice)
-	1: {dice=5} -> move(i, dice)
-	1: {dice=6} -> move(i, dice)
+	1: roll_1.i{dice=1} -> move(i, dice)
+	1: roll_2.i{dice=2} -> move(i, dice)
+	1: roll_3.i{dice=3} -> move(i, dice)
+	1: roll_4.i{dice=4} -> move(i, dice)
+	1: roll_5.i{dice=5} -> move(i, dice)
+	1: roll_6.i{dice=6} -> move(i, dice)
 };
 
 move(piece, dist) = m.piece { 
-	position[piece][0] = (position[piece][0] + dist);
-	if (position[piece][0] >= boardSize) {
-		position[piece][1] = position[piece][1] + pass_go;
+	position[piece][idx] = (position[piece][idx] + dist);
+	if (position[piece][idx] >= boardSize) {
+		position[piece][money] = position[piece][money] + pass_go;
 	}
-	position[piece][0] = position[piece][0] % boardSize;
+	position[piece][idx] = position[piece][idx] % boardSize;
 	round = round + 1;
  } -> 
  (
- [board[position[piece][0]][0] == no_owner] decideBuy(piece)
+ [board[position[piece][idx]][idx] == no_owner && board[position[piece][idx]][cost] <= position[piece][money]] decideBuy(piece)
  []
- [board[position[piece][0]][0] != no_owner && board[position[piece][0]][0] != piece] payRent(piece)
-// []
-// roll((piece + 1) % 2)
+ [board[position[piece][idx]][idx] != no_owner && board[position[piece][idx]][idx] != piece] payRent(piece)
+ []
+ Game
  );

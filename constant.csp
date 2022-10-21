@@ -11,6 +11,13 @@
 #define p1 0;
 #define p2 1;
 
-var dice = 0;
+#define idx 0;
+#define money 1;
 
+#define owner 0;
+#define cost 1;
+#define rent 2;
+#define color 3;
+
+var dice = 0;
 var roundWinner = 0;

@@ -3,8 +3,7 @@
 #include "player.pcsp";
 #include "move.pcsp";
 
-Game = roll(0);
+Game = [round <= 6] roll(round % 2);
 
-#define gameEndCondition round == 4 && position[p1][1] < position[p2][1];
-//#define test (position[p1][0] == 9);
+#define gameEndCondition round == 6 && position[p1][money] < position[p2][money];
 #assert Game reaches gameEndCondition;
