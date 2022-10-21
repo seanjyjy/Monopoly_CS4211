@@ -1,0 +1,44 @@
+﻿#define boardSize 10;
+
+#define e 0;
+#define b1 1;
+#define b2 2;
+#define r1 3;
+#define r2 4;
+#define g1 5;
+#define g2 6;
+#define g3 7;
+
+#define p1 0;
+#define p2 1;
+
+
+var currentTurn = 0;
+var round = 0;
+var dice = 1;
+
+MoveP1() = {
+	dice = 1; // roll dice here
+	currentTurn = p1;
+} -> move(p1, dice);
+
+MoveP2() = {
+	dice = 1;
+	currentTurn = p2;
+} -> move(p2, dice);
+
+var board[boardSize] = [e, b1, b2, e, r1, r2, e, g1, g2, g3];
+var position[2] = [0, 0];
+
+move(piece, dist) = m.piece { 
+	position[piece] = (position[piece] + dist) % boardSize;
+	round = round + 1;
+ } -> (([currentTurn == p1] MoveP2()) [] ([currentTurn == p2] MoveP1()));
+ 
+ 
+ Game = MoveP1();
+ 
+ #define test (position[p1] == 9);
+ 
+ 
+ #assert Game reaches test; 
