@@ -1,0 +1,17 @@
+﻿// This board describes the a more extreme example of player 1(greedy) buying randomly chosen start state
+var board[boardSize][4] = [no_owner, 0, 0, start,
+	p1, 500, 150, blue,
+	no_owner, 550, 180, blue,
+	no_owner, 0, 0, white,
+	p1, 400, 105, red,
+	no_owner, 350, 90, red,
+	no_owner, 0, 0, white,
+	p1, 300, 60, green,
+	no_owner, 350, 90, green,
+	p2, 380, 105, green
+];
+
+var position[2][2] = [0, 55, 
+0, 725];
+var round = 6;
+
