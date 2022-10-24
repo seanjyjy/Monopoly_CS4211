@@ -17,5 +17,5 @@ payRent(piece) = rentPay.piece {
 	var ownerPosition = board[position[piece][idx]][owner];
 	position[piece][money] = position[piece][money] - rental;
 	position[ownerPosition][money] = position[ownerPosition][money] + rental;
-} -> Game;
+} -> boardChecker(piece);
 

@@ -2,8 +2,18 @@
 #include "constant.csp";
 #include "player.pcsp";
 #include "move.pcsp";
+#import "Utils";
 
-Game = [round <= 6] roll(round % 2);
+Game = [round < 8] roll(round % 2);
 
-#define gameEndCondition round == 6 && position[p1][money] < position[p2][money];
-#assert Game reaches gameEndCondition;
+#define gameEndCondition8RoundP1Win round == 2 && call(firstWinSecond, p1, p2, position, board);
+#assert Game reaches gameEndCondition8RoundP1Win;
+#assert Game reaches gameEndCondition8RoundP1Win with pmin;
+#assert Game reaches gameEndCondition8RoundP1Win with pmax;
+#assert Game reaches gameEndCondition8RoundP1Win with prob;
+
+#define gameEndCondition8RoundP2Win round == 8 && call(firstWinSecond, p2, p1, position, board);
+#assert Game reaches gameEndCondition8RoundP2Win;
+#assert Game reaches gameEndCondition8RoundP2Win with pmin;
+#assert Game reaches gameEndCondition8RoundP2Win with pmax;
+#assert Game reaches gameEndCondition8RoundP2Win with prob;
