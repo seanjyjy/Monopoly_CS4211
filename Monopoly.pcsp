@@ -6,9 +6,10 @@
 
 // comment out the desired board to try its configuration
 // #include "board.csp";
-#include "board1.csp";
+// #include "board1.csp";
 // #include "board2.csp";
 // #include "board3.csp";
+#include "board4.csp";
 
 /*
 Note each round denotes a player action, rather than a set of complete player actions

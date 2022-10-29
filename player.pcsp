@@ -7,9 +7,9 @@
 	dontBuyProb: Game
 };
 
-decideBuy(piece) = [piece == p1] handleBuy(piece, 4, 1)
+decideBuy(piece) = [piece == p1] handleBuy(piece, 1, 0)
 				   []
-				   [piece == p2] handleBuy(piece, 1, 1);
+				   [piece == p2] handleBuy(piece, 0, 1);
 					
 
 payRent(piece) = rentPay.piece {
