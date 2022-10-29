@@ -1,16 +1,4 @@
 ﻿// [0 -> own by which idx, 1-> cost, 2-> rent, 3-> color]
-//var board[boardSize][4] = [no_owner, 0, 0, start,
-//	no_owner, 500, 50, blue,
-//	no_owner, 550, 60, blue,
-//	no_owner, 0, 0, white,
-//	no_owner, 400, 35, red,
-//	no_owner, 350, 30, red,
-//	no_owner, 0, 0, white,
-//	no_owner, 300, 20, green,
-//	no_owner, 350, 30, green,
-//	no_owner, 380, 35, green
-//];
-
 // This board describes the initial state of a standard monopoly
 var board[boardSize][4] = [no_owner, 0, 0, start,
 	no_owner, 500, 150, blue,

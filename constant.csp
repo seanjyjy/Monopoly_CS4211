@@ -6,7 +6,7 @@
 #define no_owner -1;
 #define start 3;
 
-#define pass_go 50;
+#define pass_go 200;
 
 #define p1 0;
 #define p2 1;

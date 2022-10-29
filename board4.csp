@@ -1,11 +1,11 @@
-﻿
+﻿// This board describes the a more extreme example of player 1(greedy) buying randomly chosen start state
 var board[boardSize][4] = [no_owner, 0, 0, start,
 	no_owner, 500, 100, blue,
 	no_owner, 500, 100, blue,
-	no_owner, 0, 0, white,
+	no_owner, 500, 100, white,
 	no_owner, 500, 100, red,
 	no_owner, 500, 100, red,
-	no_owner, 0, 0, white,
+	no_owner, 500, 100, white,
 	no_owner, 500, 100, green,
 	no_owner, 500, 100, green,
 	no_owner, 500, 100, green
