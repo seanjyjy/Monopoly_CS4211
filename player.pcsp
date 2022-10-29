@@ -21,3 +21,7 @@ payRent(piece) = rentPay.piece {
 	position[ownerPosition][money] = position[ownerPosition][money] + rental;
 } -> boardChecker(piece);
 
+decidePayRent(piece) = [board[position[piece][idx]][owner] != piece] payRent(piece)
+					   []
+					   [board[position[piece][idx]][owner] == piece] Game;
+
