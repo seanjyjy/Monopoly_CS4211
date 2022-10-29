@@ -16,9 +16,7 @@ move(piece, dist) = m.piece {
 	round = round + 1;
  } -> 
  (
- [board[position[piece][idx]][idx] == no_owner && board[position[piece][idx]][cost] <= position[piece][money]] decideBuy(piece)
+ [board[position[piece][idx]][owner] == no_owner] decideBuy(piece)
  []
- [board[position[piece][idx]][idx] != no_owner && board[position[piece][idx]][idx] != piece] payRent(piece)
- []
- Game
+ [board[position[piece][idx]][owner] != no_owner && board[position[piece][idx]][owner] != piece] payRent(piece)
  );

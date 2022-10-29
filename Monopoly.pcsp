@@ -5,12 +5,14 @@
 
 
 // comment out the desired board to try its configuration
-// #include "board.csp";
-#include "board1.csp";
+ #include "board.csp";
+// #include "board1.csp";
 // #include "board2.csp";
 // #include "board3.csp";
+// #include "board4.csp";
 
-/*
+/* TODO: change the probability of these numbers since it has already been changed in some logic
+
 Note each round denotes a player action, rather than a set of complete player actions
 Round 5: P1 -> P2 -> P1 -> P2 -> P1
 
@@ -34,10 +36,10 @@ Board3: simulates a low occurence game where p1 has lesser houses than p2 after 
 
 // Note if we are using board 0, max at round = 6/7 as the dimensions can get too large
 // if using board 1-3, can feel free to try 10-13 (can take up till 16s max)
-var roundsToPlay = 13;
+var roundsToPlay = 7;
 Game = [round < roundsToPlay] roll(round % 2);
 
-boardChecker(piece) = [position[piece][money] < 0] Skip [] Game;
+boardChecker(piece) = [position[piece][money] < 0] { round = roundsToPlay } -> Skip [] Game;
 
 #define gameEndConditionBoundedRoundP1Win round == roundsToPlay && call(firstWinSecond, p1, p2, position, board);
 #assert Game reaches gameEndConditionBoundedRoundP1Win;
