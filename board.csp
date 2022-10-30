@@ -1,6 +1,6 @@
 ﻿// This board describes the initial state of a standard monopoly
 
-var properties[propertyCount][propertyFields] = [none, 0, 0, start,
+var properties[propertyCount][propertyFieldCount] = [none, 0, 0, start,
 	none, 500, 150, blue,
 	none, 550, 180, blue,
 	none, 0, 0, white,

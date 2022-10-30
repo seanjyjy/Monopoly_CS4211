@@ -1,5 +1,5 @@
 ﻿#define propertyCount 10;
-#define propertyFields 4;
+#define propertyFieldCount 4;
 
 // property fields
 #define owner 0; // possible property owners 
@@ -8,9 +8,9 @@
 #define color 3; // possible property colors
 
 // possible property owners (maybe change to enum)
-#define none 0;
-#define p1 1;
-#define p2 2;
+#define none -1;
+#define p1 0;
+#define p2 1;
 
 // possible property colors (maybe change to enum)
 #define start -1;

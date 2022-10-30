@@ -1,7 +1,7 @@
 ﻿#include "constant.csp";
 #include "player.pcsp";
 #include "move.pcsp";
-#import "Utils";
+#import "UtilsNew";
 
 // comment out the desired board to try its configuration
 #include "board.csp";
@@ -34,27 +34,33 @@ Board3: simulates a low occurence game where p1 has lesser houses than p2 after 
 */
 
 // TODO: ADD INTERMEDIATE EVENTS (EVEN IF DUMMY) FOR ALL ACTIONS SO THAT IT SHOWS UP IN TRACE
-// e.g. what round is it (before roll), no need pay rent, no money buy property, bankrupt condition, does curr property have owner 
+// e.g. what round is it (before roll), no need pay rent, no money buy property, bankrupt condition, does curr property have owner
+// DONE!!!
 
 // TODO: check why p2 always win with such huge probability when starting money is low (vary your variables e.g. can only roll 1 for dice)
+// DONE!!!
 
 // Note if we are using board 0, max at round = 6/7 as the dimensions can get too large
 // if using board 1-3, can feel free to try 10-13 (can take up till 16s max)
 
-var roundsToPlay = 7;
-var dummyVar = 0;
+var roundsToPlay = 6;
+var dummyVar = 0; // For dummy event so it shows up in trace
 
-Game = [round < roundsToPlay] roll(round % 2) [] Skip; # Need Skip to exit simulation, otherwise deadlock because no state to transition to
+Game = [round < roundsToPlay] roundNo.round { dummyVar = 0; } -> roll(round % 2) 
+	   []
+	   [round >= roundsToPlay] gameEnd.round { dummyVar = 0; } -> Skip; // Exit simulation to prevent deadlock
 
-boardChecker(player) = [money[player] < 0] { round = roundsToPlay } -> Skip [] Game; // bankrupt condition, end game
+boardChecker(player) = [money[player] >= 0] Game
+				       []
+					   [money[player] < 0] bankruptGameEnd.player { round = roundsToPlay } -> Skip;
 
-#define gameEndConditionBoundedRoundP1Win round == roundsToPlay && call(firstWinSecond, p1, p2, position, board);
+#define gameEndConditionBoundedRoundP1Win round == roundsToPlay && call(didFirstWinSecond, p1, p2, money, properties, propertyFieldCount, owner, cost);
 #assert Game reaches gameEndConditionBoundedRoundP1Win;
 #assert Game reaches gameEndConditionBoundedRoundP1Win with pmin;
 #assert Game reaches gameEndConditionBoundedRoundP1Win with pmax;
 #assert Game reaches gameEndConditionBoundedRoundP1Win with prob;
 
-#define gameEndConditionBoundedRoundP2Win round == roundsToPlay && call(firstWinSecond, p2, p1, position, board);
+#define gameEndConditionBoundedRoundP2Win round == roundsToPlay && call(didFirstWinSecond, p2, p1, money, properties, propertyFieldCount, owner, cost);
 #assert Game reaches gameEndConditionBoundedRoundP2Win;
 #assert Game reaches gameEndConditionBoundedRoundP2Win with pmin;
 #assert Game reaches gameEndConditionBoundedRoundP2Win with pmax;

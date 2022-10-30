@@ -1,27 +1,28 @@
 ﻿handleBuy(player, buyProb, dontBuyProb) = pcase {
 	buyProb: buyProperty.player {
-    var currProperty = position[player];
+    	var currProperty = position[player];
 		properties[currProperty][owner] = player;
 		money[player] = money[player] - properties[currProperty][cost];
 	} -> Game
 	dontBuyProb: dontBuyProperty.player {
-    dummyVar = 1; // dummy event so it shows up in trace
-  } -> Game
+     	dummyVar = 1;
+  	} -> Game
 };
 
-decideBuy(player) = [properties[position[player]][cost] > money[player]] Game // not enough money to buy
+decideBuy(player) = [properties[position[player]][cost] > money[player]] noMoneyBuy.player{ dummyVar = 0; } -> Game
 				   []
 				   [player == p1] handleBuy(player, 1, 0)
 				   []
 				   [player == p2] handleBuy(player, 1, 0);
 
 handlePayRent(player) = payRent.player {
-  var currProperty = position[player];
+ 	var currProperty = position[player];
 	var rental = properties[currProperty][rent];
 	var currOwner = properties[currProperty][owner];
 	money[player] = money[player] - rental;
 	money[currOwner] = money[currOwner] + rental;
 } -> boardChecker(player);
 
-decidePayRent(player) = [properties[position[player]][owner] == player] Game // dont need to pay rent to ownself
-                      [] [properties[position[player]][owner] != player] handlePayRent(player)
+decidePayRent(player) = [properties[position[player]][owner] == player] noNeedPayRentToOwnself.player{ dummyVar = 0; } -> Game
+                       [] 
+                       [properties[position[player]][owner] != player] handlePayRent(player);

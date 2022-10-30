@@ -1,6 +1,6 @@
-﻿// This board describes the a randomly chosen start state. This board simulate just nice player1 which is greedy but didnt buy any property (LOW PROB) and player2 which is not greedy just nice buy two property( LOW PROB)
+﻿s// This board describes the a randomly chosen start state. This board simulate just nice player1 which is greedy but didnt buy any property (LOW PROB) and player2 which is not greedy just nice buy two property( LOW PROB)
 
-var properties[propertyCount][propertyFields] = [none, 0, 0, start,
+var properties[propertyCount][propertyFieldCount] = [none, 0, 0, start,
 	none, 500, 150, blue,
 	p2, 550, 180, blue,
 	none, 0, 0, white,

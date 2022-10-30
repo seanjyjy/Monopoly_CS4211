@@ -1,6 +1,6 @@
 ﻿// This board describes the a more extreme example of player 1(greedy) buying randomly chosen start state
 
-var properties[propertyCount][propertyFields] = [none, 0, 0, start,
+var properties[propertyCount][propertyFieldCount] = [none, 0, 0, start,
 	p1, 500, 150, blue,
 	none, 550, 180, blue,
 	none, 0, 0, white,
