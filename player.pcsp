@@ -1,27 +1,27 @@
-﻿handleBuy(piece, buyProb, dontBuyProb) = pcase {
-	buyProb: buyProperty.piece {
-		var piecePos = position[piece][idx];
-		board[piecePos][idx] = piece;
-		position[piece][money] = position[piece][money] - board[piecePos][cost];
+﻿handleBuy(player, buyProb, dontBuyProb) = pcase {
+	buyProb: buyProperty.player {
+    var currProperty = position[player];
+		properties[currProperty][owner] = player;
+		money[player] = money[player] - properties[currProperty][cost];
 	} -> Game
-	dontBuyProb: Game
+	dontBuyProb: dontBuyProperty.player {
+    dummyVar = 1; // dummy event so it shows up in trace
+  } -> Game
 };
 
-decideBuy(piece) = [board[position[piece][idx]][cost] > position[piece][money]] Game
+decideBuy(player) = [properties[position[player]][cost] > money[player]] Game // not enough money to buy
 				   []
-				   [piece == p1] handleBuy(piece, 1, 0)
+				   [player == p1] handleBuy(player, 1, 0)
 				   []
-				   [piece == p2] handleBuy(piece, 1, 0);
-					
+				   [player == p2] handleBuy(player, 1, 0);
 
-payRent(piece) = rentPay.piece {
-	var rental = board[position[piece][idx]][rent];
-	var ownerPosition = board[position[piece][idx]][owner];
-	position[piece][money] = position[piece][money] - rental;
-	position[ownerPosition][money] = position[ownerPosition][money] + rental;
-} -> boardChecker(piece);
+handlePayRent(player) = payRent.player {
+  var currProperty = position[player];
+	var rental = properties[currProperty][rent];
+	var currOwner = properties[currProperty][owner];
+	money[player] = money[player] - rental;
+	money[currOwner] = money[currOwner] + rental;
+} -> boardChecker(player);
 
-decidePayRent(piece) = [board[position[piece][idx]][owner] != piece] payRent(piece)
-					   []
-					   [board[position[piece][idx]][owner] == piece] Game;
-
+decidePayRent(player) = [properties[position[player]][owner] == player] Game // dont need to pay rent to ownself
+                      [] [properties[position[player]][owner] != player] handlePayRent(player)

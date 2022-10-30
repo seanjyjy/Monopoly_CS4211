@@ -1,18 +1,28 @@
-﻿// [0 -> own by which idx, 1-> cost, 2-> rent, 3-> color]
-// This board describes the initial state of a standard monopoly
-var board[boardSize][4] = [no_owner, 0, 0, start,
-	no_owner, 500, 150, blue,
-	no_owner, 550, 180, blue,
-	no_owner, 0, 0, white,
-	no_owner, 400, 105, red,
-	no_owner, 350, 90, red,
-	no_owner, 0, 0, white,
-	no_owner, 300, 60, green,
-	no_owner, 350, 90, green,
-	no_owner, 380, 105, green
+﻿// This board describes the initial state of a standard monopoly
+
+var properties[propertyCount][propertyFields] = [none, 0, 0, start,
+	none, 500, 150, blue,
+	none, 550, 180, blue,
+	none, 0, 0, white,
+	none, 400, 105, red,
+	none, 350, 90, red,
+	none, 0, 0, white,
+	none, 300, 60, green,
+	none, 350, 90, green,
+	none, 380, 105, green
 ];
 
-var position[2][2] = [0, 1000, 
-0, 1000];
+// initial board state
 var round = 0;
+var pass_go_money = 200;
 
+// initial player 1 state
+var p1StartPos = 0;
+var p1StartMoney = 1000;
+
+// initial player 2 state
+var p2StartPos = 0;
+var p2StartMoney = 1000; 
+
+var position[2] = [p1StartPos, p2StartPos];
+var money[2] = [p1StartMoney, p2StartMoney];

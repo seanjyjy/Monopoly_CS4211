@@ -1,17 +1,21 @@
-﻿// This board describes the a more extreme example of player 1(greedy) buying randomly chosen start state
-var board[boardSize][4] = [no_owner, 0, 0, start,
-	no_owner, 500, 100, blue,
-	no_owner, 500, 100, blue,
-	no_owner, 0, 0, white,
-	no_owner, 500, 100, red,
-	no_owner, 500, 100, red,
-	no_owner, 0, 0, white,
-	no_owner, 500, 100, green,
-	no_owner, 500, 100, green,
-	no_owner, 500, 100, green
+// This board describes the a more extreme example of player 1(greedy) buying randomly chosen start state
+
+var properties[propertyCount][propertyFields] = [none, 0, 0, start,
+	none, 500, 100, blue,
+	none, 500, 100, blue,
+	none, 0, 0, white,
+	none, 500, 100, red,
+	none, 500, 100, red,
+	none, 0, 0, white,
+	none, 500, 100, green,
+	none, 500, 100, green,
+	none, 500, 100, green
 ];
 
-var position[2][2] = [0, 300, 
-0, 300];
+// initial board state
 var round = 6;
+var pass_go_money = 200;
 
+// initial player states
+var position[2] = [0, 0];
+var money[2] = [300, 300];

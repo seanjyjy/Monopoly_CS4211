@@ -1,17 +1,21 @@
 ﻿// This board describes the a randomly chosen start state
-var board[boardSize][4] = [no_owner, 0, 0, start,
+
+var properties[propertyCount][propertyFields] = [none, 0, 0, start,
 	p1, 500, 150, blue,
-	no_owner, 550, 180, blue,
-	no_owner, 0, 0, white,
+	none, 550, 180, blue,
+	none, 0, 0, white,
 	p1, 400, 105, red,
 	p2, 350, 90, red,
-	no_owner, 0, 0, white,
-	no_owner, 300, 60, green,
-	no_owner, 350, 90, green,
+	none, 0, 0, white,
+	none, 300, 60, green,
+	none, 350, 90, green,
 	p2, 380, 105, green
 ];
 
-var position[2][2] = [0, 150, 
-0, 320];
+// initial board state
 var round = 6;
+var pass_go_money = 200;
 
+// initial player states
+var position[2] = [0, 0];
+var money[2] = [150, 150];
