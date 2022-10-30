@@ -33,7 +33,8 @@ Board3: simulates a low occurence game where p1 has lesser houses than p2 after 
 
 */
 
-
+// TODO: ADD INTERMEDIATE EVENTS (EVEN IF DUMMY) FOR ALL ACTIONS SO THAT IT SHOWS UP IN TRACE
+// e.g. what round is it (before roll), no need pay rent, no money buy property, bankrupt condition, does curr property have owner 
 
 // Note if we are using board 0, max at round = 6/7 as the dimensions can get too large
 // if using board 1-3, can feel free to try 10-13 (can take up till 16s max)
@@ -43,7 +44,7 @@ var dummyVar = 0;
 
 Game = [round < roundsToPlay] roll(round % 2) [] Skip; # Need Skip to exit simulation, otherwise deadlock because no state to transition to
 
-boardChecker(player) = [money[player] < 0] { round = roundsToPlay } -> Skip [] Game;
+boardChecker(player) = [money[player] < 0] { round = roundsToPlay } -> Skip [] Game; // bankrupt condition, end game
 
 #define gameEndConditionBoundedRoundP1Win round == roundsToPlay && call(firstWinSecond, p1, p2, position, board);
 #assert Game reaches gameEndConditionBoundedRoundP1Win;
