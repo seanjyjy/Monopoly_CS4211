@@ -1,23 +1,20 @@
-﻿#define boardSize 10;
-#define white -1;
-#define blue 0;
-#define red 1;
-#define green 2;
-#define no_owner -1;
-#define start 3;
+﻿#define propertyCount 10;
+#define propertyFields 4;
 
-#define pass_go 200;
+// property fields
+#define owner 0; // possible property owners 
+#define cost 1; // integer
+#define rent 2; // integer
+#define color 3; // possible property colors
 
-#define p1 0;
-#define p2 1;
+// possible property owners (maybe change to enum)
+#define none 0;
+#define p1 1;
+#define p2 2;
 
-#define idx 0;
-#define money 1;
-
-#define owner 0;
-#define cost 1;
-#define rent 2;
-#define color 3;
-
-var dice = 0;
-var roundWinner = 0;
+// possible property colors (maybe change to enum)
+#define start -1;
+#define white 0;
+#define blue 1;
+#define red 2;
+#define green 3;

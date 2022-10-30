@@ -1,17 +1,21 @@
 ﻿// This board describes the a randomly chosen start state. This board simulate just nice player1 which is greedy but didnt buy any property (LOW PROB) and player2 which is not greedy just nice buy two property( LOW PROB)
-var board[boardSize][4] = [no_owner, 0, 0, start,
-	no_owner, 500, 150, blue,
+
+var properties[propertyCount][propertyFields] = [none, 0, 0, start,
+	none, 500, 150, blue,
 	p2, 550, 180, blue,
-	no_owner, 0, 0, white,
-	no_owner, 400, 105, red,
-	no_owner, 350, 90, red,
-	no_owner, 0, 0, white,
-	no_owner, 300, 60, green,
-	no_owner, 350, 90, green,
+	none, 0, 0, white,
+	none, 400, 105, red,
+	none, 350, 90, red,
+	none, 0, 0, white,
+	none, 300, 60, green,
+	none, 350, 90, green,
 	p2, 380, 105, green
 ];
 
-var position[2][2] = [0, 1050, 
-0, 70];
+// initial board state
 var round = 6;
+var pass_go_money = 200;
 
+// initial player states
+var position[2] = [0, 0];
+var money[2] = [1050, 70];
