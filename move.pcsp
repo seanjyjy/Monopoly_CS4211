@@ -18,5 +18,6 @@ move(piece, dist) = m.piece {
  (
  [board[position[piece][idx]][owner] == no_owner] decideBuy(piece)
  []
- [board[position[piece][idx]][owner] != no_owner] payRent(piece)
+ [board[position[piece][idx]][owner] != no_owner] decidePayRent(piece)
  );
+ 
