@@ -43,12 +43,11 @@ Board3: simulates a low occurence game where p1 has lesser houses than p2 after 
 // Note if we are using board 0, max at round = 6/7 as the dimensions can get too large
 // if using board 1-3, can feel free to try 10-13 (can take up till 16s max)
 
-var roundsToPlay = 6;
-var dummyVar = 0; // For dummy event so it shows up in trace
+var roundsToPlay = 8;
 
-Game = [round < roundsToPlay] roundNo.round { dummyVar = 0; } -> roll(round % 2) 
+Game = [round < roundsToPlay] roundNo.round -> roll(round % 2) 
 	   []
-	   [round >= roundsToPlay] gameEnd.round { dummyVar = 0; } -> Skip; // Exit simulation to prevent deadlock
+	   [round >= roundsToPlay] gameEnd.round -> Skip; // Exit simulation to prevent deadlock
 
 boardChecker(player) = [money[player] >= 0] Game
 				       []

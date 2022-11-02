@@ -4,18 +4,17 @@
 		properties[currProperty][owner] = player;
 		money[player] = money[player] - properties[currProperty][cost];
 	} -> Game
-	dontBuyProb: dontBuyProperty.player {
-     	dummyVar = 1;
-  	} -> Game
+	dontBuyProb: dontBuyProperty.player -> Game
 };
 
-decideBuy(player) = [properties[position[player]][cost] > money[player]] noMoneyBuy.player{ dummyVar = 0; } -> Game
+decideBuy(player) = [properties[position[player]][cost] > money[player]] noMoneyBuy.player -> Game
 				   []
 				   [player == p1] handleBuy(player, 1, 0)
 				   []
 				   [player == p2] handleBuy(player, 1, 0);
+				  
 
-handlePayRent(player) = payRent.player {
+handlePayRent(player) = payRent.properties[position[player]][rent] {
  	var currProperty = position[player];
 	var rental = properties[currProperty][rent];
 	var currOwner = properties[currProperty][owner];
@@ -23,6 +22,6 @@ handlePayRent(player) = payRent.player {
 	money[currOwner] = money[currOwner] + rental;
 } -> boardChecker(player);
 
-decidePayRent(player) = [properties[position[player]][owner] == player] noNeedPayRentToOwnself.player{ dummyVar = 0; } -> Game
+decidePayRent(player) = [properties[position[player]][owner] == player] noNeedPayRentToOwnself.player -> Game
                        [] 
                        [properties[position[player]][owner] != player] handlePayRent(player);
