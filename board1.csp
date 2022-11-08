@@ -1,15 +1,18 @@
 ﻿// This board describes the a randomly chosen start state
 
+#define b1cost 500;
+#define b1rent 100;
+
 var properties[propertyCount][propertyFieldCount] = [none, 0, 0, start,
-	p1, 500, 150, blue,
-	none, 550, 180, blue,
+	p1, b1cost, b1rent, blue,
+	none, b1cost, b1rent, blue,
 	none, 0, 0, white,
-	p1, 400, 105, red,
-	p2, 350, 90, red,
+	p1, b1cost, b1rent, red,
+	p2, b1cost, b1rent, red,
 	none, 0, 0, white,
-	none, 300, 60, green,
-	none, 350, 90, green,
-	p2, 380, 105, green
+	none, b1cost, b1rent, green,
+	none, b1cost, b1rent, green,
+	p2, b1cost, b1rent, green
 ];
 
 // initial board state
@@ -18,4 +21,4 @@ var pass_go_money = 200;
 
 // initial player states
 var position[2] = [0, 0];
-var money[2] = [150, 150];
+var money[2] = [200, 200];

@@ -16,6 +16,7 @@ move(player, dist) = movePlayer.player {
 	}
 	position[player] = position[player] % propertyCount;
 	round = round + 1;
+	startPlayer = startPlayer + 1;
  } -> 
  (
  [properties[position[player]][owner] == none] decideBuyEvent.player -> decideBuy(player)

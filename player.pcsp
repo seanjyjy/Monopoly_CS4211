@@ -1,4 +1,16 @@
-﻿handleBuy(player, buyProb, dontBuyProb) = pcase {
+﻿#define maxGreedyBuy 1;
+#define maxGreedyDontBuy 0;
+
+#define greedyBuy 3;
+#define greedyDontBuy 1;
+
+#define neutralBuy 1;
+#define neutralDontBuy 1;
+
+#define maxNotGreedyBuy 0;
+#define maxNotGreedyDontBuy 1;
+
+handleBuy(player, buyProb, dontBuyProb) = pcase {
 	buyProb: buyProperty.player {
     	var currProperty = position[player];
 		properties[currProperty][owner] = player;
@@ -9,9 +21,9 @@
 
 decideBuy(player) = [properties[position[player]][cost] > money[player]] noMoneyBuy.player -> Game
 				   []
-				   [player == p1] handleBuy(player, 1, 0)
+				   [player == p1] handleBuy(player, greedyBuy, greedyDontBuy)
 				   []
-				   [player == p2] handleBuy(player, 1, 0);
+				   [player == p2] handleBuy(player, maxGreedyBuy, maxGreedyDontBuy);
 				  
 
 handlePayRent(player) = payRent.properties[position[player]][rent] {
