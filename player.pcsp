@@ -1,14 +1,4 @@
-﻿#define maxGreedyBuy 1;
-#define maxGreedyDontBuy 0;
-
-#define greedyBuy 3;
-#define greedyDontBuy 1;
-
-#define neutralBuy 1;
-#define neutralDontBuy 1;
-
-#define maxNotGreedyBuy 0;
-#define maxNotGreedyDontBuy 1;
+﻿
 
 handleBuy(player, buyProb, dontBuyProb) = pcase {
 	buyProb: buyProperty.player {
@@ -21,9 +11,9 @@ handleBuy(player, buyProb, dontBuyProb) = pcase {
 
 decideBuy(player) = [properties[position[player]][cost] > money[player]] noMoneyBuy.player -> Game
 				   []
-				   [player == p1] handleBuy(player, greedyBuy, greedyDontBuy)
+				   [player == p1] handleBuy(player, p1GreedinessBuy, p1GreedinessDontBuy)
 				   []
-				   [player == p2] handleBuy(player, maxGreedyBuy, maxGreedyDontBuy);
+				   [player == p2] handleBuy(player, p2GreedinessBuy, p2GreedinessDontBuy);
 				  
 
 handlePayRent(player) = payRent.properties[position[player]][rent] {

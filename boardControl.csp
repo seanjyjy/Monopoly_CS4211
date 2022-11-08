@@ -16,6 +16,14 @@ var properties[propertyCount][propertyFieldCount] = [none, 0, 0, start,
 var round = 0;
 var pass_go_money = 200;
 
+// initial player 1 state
+var p1StartPos = 0;
+var p1StartMoney = 1000;
+
+// initial player 2 state
+var p2StartPos = 0;
+var p2StartMoney = 1000; 
+
 // initial player states
-var position[2] = [0, 0];
-var money[2] = [1000, 1000];
+var position[2] = [p1StartPos, p2StartPos];
+var money[2] = [p1StartMoney, p2StartMoney];

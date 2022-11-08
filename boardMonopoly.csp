@@ -24,5 +24,6 @@ var p1StartMoney = 1000;
 var p2StartPos = 0;
 var p2StartMoney = 1000; 
 
+// initial player states
 var position[2] = [p1StartPos, p2StartPos];
 var money[2] = [p1StartMoney, p2StartMoney];

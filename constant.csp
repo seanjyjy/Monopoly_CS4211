@@ -18,3 +18,26 @@
 #define blue 1;
 #define red 2;
 #define green 3;
+
+
+// Player greediness levels
+
+// Glutton (greedy)
+#define gluttonBuy 1;
+#define gluttonDontBuy 0;
+
+// Generous (greedy)
+#define generousBuy 3;
+#define generousDontBuy 1;
+
+// Neutral
+#define neutralBuy 1;
+#define neutralDontBuy 1;
+
+// Frugal (non-greedy)
+#define frugalBuy 1;
+#define frugalDontBuy 3;
+
+// Miserly (non-greedy)
+#define miserlyBuy 0;
+#define miserlyDontBuy 1;

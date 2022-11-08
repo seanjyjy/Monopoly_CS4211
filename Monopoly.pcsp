@@ -4,43 +4,28 @@
 #import "Utils";
 
 // comment out the desired board to try its configuration
-// #include "board1.csp";
-// #include "board2.csp";
-// #include "board3.csp";
 #include "boardControl.csp";
 // #include "boardMonopoly.csp";
 
-/* TODO: change the probability of these numbers since it has already been changed in some logic
+// #include "board1.csp";
+// #include "board2.csp";
+// #include "board3.csp";
 
+/*
 Note each round denotes a player action, rather than a set of complete player actions
 Round 5: P1 -> P2 -> P1 -> P2 -> P1
-
-Board0: simulates a clean slate of the monopoly game. Running with number of rounds to reach 8, takes around 120s. 
-#assert Game reaches gameEndConditionBoundedRoundP1Win with prob -> [0.47218, 0.49535]
-#assert Game reaches gameEndConditionBoundedRoundP2Win with prob -> [0.30405, 0.31716]
-
-Board1: simulates where p1 and p2 have equal number of houses after round 5 of the monopoly game. Running with number of rounds to reach 13, takes around 10-16s. 
-#assert Game reaches gameEndConditionBoundedRoundP1Win with prob -> [0.71894, 0.77755]
-#assert Game reaches gameEndConditionBoundedRoundP2Win with prob -> [0.25889, 0.32603]
-
-Board2: simulates a where p1 have more number of houses than p2 after round 5 of the monopoly game. Running with number of rounds to reach 13, takes around 10s. 
-#assert Game reaches gameEndConditionBoundedRoundP1Win with prob -> [0.75316, 0.79927]
-#assert Game reaches gameEndConditionBoundedRoundP2Win with prob -> [0.21053, 0.26805]
-
-Board3: simulates a low occurence game where p1 has lesser houses than p2 after round 5 of the monopoly game. Running with number of rounds to reach 13, takes around 10s. 
-#assert Game reaches gameEndConditionBoundedRoundP1Win with prob -> [0.44705, 0.50263]
-#assert Game reaches gameEndConditionBoundedRoundP2Win with prob -> [0.52842, 0.5787]
-
-Board4: simulates a ... of the monopoly game. Running with number of rounds to reach 13, takes around 10s. 
-#assert Game reaches gameEndConditionBoundedRoundP1Win with prob -> [0.44705, 0.50263]
-#assert Game reaches gameEndConditionBoundedRoundP2Win with prob -> [0.52842, 0.5787]
 */
 
-// Note if we are using board 0, max at round = 6/7 as the dimensions can get too large
-// if using board 1-3, can feel free to try 10-13 (can take up till 16s max)
-
+// initial game states
 var startPlayer = 0;
 var roundsToPlay = 8;
+
+var p1GreedinessBuy = generousBuy;
+var p1GreedinessDontBuy = generousDontBuy;
+var p2GreedinessBuy = gluttonBuy;
+var p2GreedinessDontBuy = gluttonDontBuy;
+
+
 
 Game = [round < roundsToPlay] roundNo.round -> roll(startPlayer % 2) 
 	   []
